@@ -25,5 +25,11 @@ namespace CQRSMediatRPractise.Controllers
             };
             return Ok(await _mediator.Send(query));
         }
+        [HttpGet()]
+        public async Task<IActionResult> GetAll()
+        {
+            var query = new GetAllCarQuery();
+            return Ok(await _mediator.Send(query));
+        }
     }
 }
