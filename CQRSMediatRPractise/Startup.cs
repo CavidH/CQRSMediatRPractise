@@ -26,7 +26,7 @@ namespace CQRSMediatRPractise
             services.AddControllers();
             services.AddDbContext<AppDbContext>(context =>
                 context.UseSqlServer(Configuration.GetConnectionString("Default")));
-            services.AddMediatR(typeof(Startup))
+            services.AddMediatR(typeof(Startup));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CQRSMediatRPractise", Version = "v1" });

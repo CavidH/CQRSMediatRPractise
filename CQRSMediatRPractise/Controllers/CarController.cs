@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
+using CQRSMediatRPractise.MediatR.Commands;
 using CQRSMediatRPractise.MediatR.Queries;
+using CQRSMediatRPractise.Models;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +32,18 @@ namespace CQRSMediatRPractise.Controllers
         {
             var query = new GetAllCarQuery();
             return Ok(await _mediator.Send(query));
+        }
+
+        [HttpPost()]
+        public async Task<IActionResult> Post(Car car)
+        {
+            var command = new CreateCarCommand
+            {
+                Name = car.Name,
+                HP = car.HP,
+                Weight = car.Weight
+            };
+            return Ok(await _mediator.Send(command));
         }
     }
 }
